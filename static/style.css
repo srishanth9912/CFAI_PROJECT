@@ -53,6 +53,6 @@ th, td {
 }
 
 .error {
-    color: red;
+   color: darkred;
     margin-top: 15px;
 }
