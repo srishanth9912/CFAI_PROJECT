@@ -14,7 +14,7 @@ def bubble_sort(arr):
                 a[j] = a[j + 1]
                 a[j + 1] = temp
     return a
-
+# Merge sort logic
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
