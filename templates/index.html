@@ -4,12 +4,12 @@
    <title>My Sorting Project</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body>placeholder="50,30,70,20"
     <div class="container">
         <h1>Sorting Algorithm Comparison</h1>
         <form method="POST">
             <label>Enter Numbers (Comma Separated)</label>
-            <input type="text" name="numbers" placeholder="50,20,10,80,30" required>
+            <input type="text" name="numbers"  required>
             <button type="submit">Compare</button>
         </form>
         {% if error %}
