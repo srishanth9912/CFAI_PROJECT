@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 import time
 
 app = Flask(__name__)
-
+# Bubble sort logic
 def bubble_sort(arr):
     a = arr.copy()
     n = len(a)
