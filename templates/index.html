@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sorting Comparison</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sorting Algorithm Comparison</h1>
+        <form method="POST">
+            <label>Enter Numbers (Comma Separated)</label>
+            <input type="text" name="numbers" placeholder="50,20,10,80,30" required>
+            <button type="submit">Compare</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if sorted_array %}
+        <div class="result">
+            <h2>Results</h2>
+            <p><strong>Number of Elements:</strong> {{ total }}</p>
+            <p><strong>Given Array:</strong> {{ original_array }}</p>
+            <p><strong>Sorted Array:</strong> {{ sorted_array }}</p>
+            <table>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Complexity</th>
+                    <th>Time (sec)</th>
+                </tr>
+                <tr>
+                    <td>Bubble Sort</td>
+                    <td>O(n^2)</td>
+                    <td>{{ bubble_time }}</td>
+                </tr>
+                <tr>
+                    <td>Merge Sort</td>
+                    <td>O(n log n)</td>
+                    <td>{{ merge_time }}</td>
+                </tr>
+            </table>
+            <h3>Winner : {{ winner }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
