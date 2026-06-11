@@ -7,10 +7,11 @@
 <body>
     <div class="container">
         <h1>Sorting Algorithm Comparison</h1>
-        <p>Enter numbers separated by commas</p>
+        <p>Enter the number of elements to generate (Max: {{ max_size }})</p>
+
         <form method="POST">
-            <label>Enter Numbers (Comma Separated)</label>
-           <input type="text" name="numbers" placeholder="10,5,8,2,1,7" required>
+            <label>Enter Number of Elements</label>
+            <input type="number" name="size" placeholder="100" min="1" max="{{ max_size }}" required>
             <button type="submit">Compare</button>
         </form>
         {% if error %}

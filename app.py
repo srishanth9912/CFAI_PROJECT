@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
 from time import perf_counter
+import random
 
 app = Flask(__name__)
+
+MAX_SIZE = 500
+
 
 # Bubble Sort
 def bubble_sort(arr):
@@ -34,7 +38,6 @@ def merge_sort(arr):
     j = 0
 
     while i < len(left) and j < len(right):
-
         if left[i] <= right[j]:
             result.append(left[i])
             i += 1
@@ -54,12 +57,19 @@ def home():
     if request.method == "POST":
 
         try:
-            numbers = request.form["numbers"]
+            size = int(request.form["size"])
+
+            if size > MAX_SIZE:
+                return render_template(
+                    "index.html",
+                    error="Size too large! Maximum allowed is " + str(MAX_SIZE) + ". Try a smaller value.",
+                    max_size=MAX_SIZE
+                )
 
             arr = []
 
-            for x in numbers.split(","):
-                arr.append(int(x.strip()))
+            for i in range(size):
+                arr.append(random.randint(1, 1000))
 
             # Bubble Sort Timing
             start = perf_counter()
@@ -92,16 +102,18 @@ def home():
                 bubble_time=round(bubble_time, 6),
                 merge_time=round(merge_time, 6),
                 winner=winner,
-                total=len(arr)
+                total=len(arr),
+                max_size=MAX_SIZE
             )
 
         except ValueError:
             return render_template(
                 "index.html",
-                error="Please enter valid integers separated by commas."
+                error="Please enter a valid size.",
+                max_size=MAX_SIZE
             )
 
-    return render_template("index.html")
+    return render_template("index.html", max_size=MAX_SIZE)
 
 
 if __name__ == "__main__":
